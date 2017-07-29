@@ -18,7 +18,7 @@
 					type="number"
 					float-label="Quantity"
 					v-model="quantity"
-					min="1"
+					:min="1"
 				></q-input>
 			</q-card-main>
 			
