@@ -1,7 +1,7 @@
 <template>
 <div class="layout-padding">
 	<div class="row justify-center">
-		<q-card class="col-md-6">
+		<q-card class="col-md-6 relative-position">
 			<q-card-title>
 				Create new shopping item
 			</q-card-title>
@@ -23,9 +23,11 @@
 			</q-card-main>
 			
 			<q-card-actions align="end">
-				<q-btn @click="create" flat color="negative">Cancel</q-btn>
-				<q-btn @click="goBack" flat color="primary">Create</q-btn>
+				<q-btn @click="goBack" flat color="negative">Cancel</q-btn>
+				<q-btn @click="create" flat color="primary">Create</q-btn>
 			</q-card-actions>
+
+			<q-inner-loading :visible="submittingData" color="primary" />
 		</q-card>
 	</div>
 </div>
@@ -39,6 +41,7 @@ import {
 	QCardMain,
 	QCardTitle,
 	QCardSeparator,
+	QInnerLoading,
 	QInput
 } from "quasar";
 
@@ -51,15 +54,14 @@ export default {
 		QCardMain,
 		QCardTitle,
 		QCardSeparator,
+		QInnerLoading,
 		QInput
 	},
 	data() {
 		return {
 			name: "",
 			quantity: 1,
-			rules: {
-				required: (value) => !!value || "Required."
-			}
+			submittingData: true
 		};
 	},
 
@@ -71,12 +73,15 @@ export default {
 				finished: false,
 				date: Date.now()
 			};
+
+			this.submittingData = true;
 			// Disable button whil awaiting...
 			await this.$store.addItem(item);
+			this.submittingData = false;
 			this.goBack();
 		},
 		goBack() {
-			this.$router.push({ path: "/" });
+			this.$router.push("/");
 		}
 	}
 };

@@ -8,7 +8,7 @@
 			</q-btn>
 		
 			<q-toolbar-title>
-				Quasar App
+				Shoppy
 				<!-- <div slot="subtitle">Running on Quasar v{{$q.version}}</div> -->
 			</q-toolbar-title>
 		</q-toolbar>
