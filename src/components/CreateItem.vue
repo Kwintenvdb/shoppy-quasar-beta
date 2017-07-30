@@ -84,6 +84,7 @@ export default {
 			const item = {
 				name: this.name,
 				quantity: this.quantity,
+				shop: this.selectedShop,
 				finished: false,
 				date: Date.now()
 			};

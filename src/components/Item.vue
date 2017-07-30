@@ -17,8 +17,8 @@
 		<q-checkbox v-model="dirtyFinished" @change="onCheck"></q-checkbox>
 	</q-item-side>
 	<q-item-main>
-		<q-item-tile label>{{ item.name }}</q-item-tile>
-		<q-item-tile sublabel>{{ item.quantity }}</q-item-tile>
+		<q-item-tile label>{{ item.name }} <small>({{ item.quantity }})</small></q-item-tile>
+		<q-item-tile sublabel>from {{ item.shop }}</q-item-tile>
 	</q-item-main>
 </q-item>
 
