@@ -6,7 +6,8 @@ let itemsRef = db.ref("items/");
 
 const store = {
 	state: {
-		items: {}
+		items: {},
+		hasLoadedItems: false
 	},
 	addItem(item) {
 		console.log(item);
@@ -21,21 +22,23 @@ const store = {
 };
 
 itemsRef.orderByKey().once("value", snapshot => {
+	let state = store.state;
 	let val = snapshot.val();
 	if (val) {
-		store.state.items = val;
+		state.items = val;
 	}
+	state.hasLoadedItems = true;
 
 	itemsRef.on("child_added", data => {
-		Vue.set(store.state.items, data.key, data.val());
+		Vue.set(state.items, data.key, data.val());
 	});
 
 	itemsRef.on("child_changed", data => {
-		Vue.set(store.state.items, data.key, data.val());
+		Vue.set(state.items, data.key, data.val());
 	});
 
 	itemsRef.on("child_removed", data => {
-		Vue.delete(store.state.items, data.key);
+		Vue.delete(state.items, data.key);
 	});
 });
 

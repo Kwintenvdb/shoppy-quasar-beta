@@ -1,7 +1,7 @@
 <template>
 <!-- Don't drop "q-app" class -->
 <div id="q-app">
-	<q-layout>
+	<q-layout reveal>
 		<q-toolbar slot="header">
 			<q-btn flat @click="$refs.layout.toggleLeft()">
 				<q-icon name="menu" />

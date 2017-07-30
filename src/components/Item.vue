@@ -14,7 +14,7 @@
 
 <q-item tag="label">
 	<q-item-side>
-		<q-checkbox v-model="dirtyFinished" @change="onCheck"></q-checkbox>
+		<q-checkbox :value="dirtyFinished" @change="onCheck"></q-checkbox>
 	</q-item-side>
 	<q-item-main>
 		<q-item-tile label>{{ item.name }} <small>({{ item.quantity }})</small></q-item-tile>
@@ -48,14 +48,9 @@ export default {
 			dirtyFinished: this.item.finished
 		};
 	},
-	computed: {
-		finished() {
-			return this.dirtyFinished;
-		}
-	},
 	methods: {
 		onCheck(checked) {
-			this.dirtyFinished = checked;
+			this.dirtyFinished = !checked;
 			const updatedData = {
 				finished: this.dirtyFinished
 			};

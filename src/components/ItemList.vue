@@ -10,6 +10,10 @@
 				:itemKey="item.key"
 			></item>
 
+			<!-- Give this padding like item -->
+			<center v-if="showLoading">
+				<q-spinner color="primary" :size="40" />
+			</center>
 		</q-list>
 	</q-card>
 
@@ -29,7 +33,8 @@ import {
 	QFixedPosition,
 	QIcon,
 	QList,
-	QListHeader
+	QListHeader,
+	QSpinner
 } from "quasar";
 
 export default {
@@ -41,7 +46,8 @@ export default {
 		QFixedPosition,
 		QIcon,
 		QList,
-		QListHeader
+		QListHeader,
+		QSpinner
 	},
 	data() {
 		return {
@@ -50,6 +56,9 @@ export default {
 		};
 	},
 	computed: {
+		showLoading() {
+			return !this.state.hasLoadedItems;
+		},
 		items() {
 			return this.state.items;
 		},
