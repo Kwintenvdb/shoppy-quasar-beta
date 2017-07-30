@@ -12,8 +12,14 @@
 				<!-- <div slot="subtitle">Running on Quasar v{{$q.version}}</div> -->
 			</q-toolbar-title>
 		</q-toolbar>
-
-		<router-view />
+		
+		<div class="layout-padding">
+			<div class="row justify-center">
+				<div class="col-md-6">
+					<router-view />
+				</div>
+			</div>
+		</div>
 	</q-layout>
 </div>
 </template>

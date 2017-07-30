@@ -1,36 +1,37 @@
 <template>
-<div class="layout-padding">
-	<div class="row justify-center">
-		<q-card class="col-md-6 relative-position">
-			<q-card-title>
-				Create new shopping item
-			</q-card-title>
-			
-			<q-card-separator></q-card-separator>
-			
-			<q-card-main>
-				<q-input
-					autofocus
-					float-label="Item name"
-					v-model="name"
-				></q-input>
-				<q-input
-					type="number"
-					float-label="Quantity"
-					v-model="quantity"
-					:min="1"
-				></q-input>
-			</q-card-main>
-			
-			<q-card-actions align="end">
-				<q-btn @click="goBack" flat color="negative">Cancel</q-btn>
-				<q-btn @click="create" flat color="primary">Create</q-btn>
-			</q-card-actions>
+<q-card class="relative-position">
+	<q-card-title>
+		Create new shopping item
+	</q-card-title>
+	
+	<q-card-separator></q-card-separator>
+	
+	<q-card-main>
+		<q-input
+			autofocus
+			float-label="Item name"
+			v-model="name"
+		></q-input>
+		<q-input
+			type="number"
+			float-label="Quantity"
+			v-model="quantity"
+			:min="1"
+		></q-input>
+		<q-select
+			float-label="Shop"
+			:options="shopOptions"
+			v-model="selectedShop"
+		></q-select>
+	</q-card-main>
+	
+	<q-card-actions align="end">
+		<q-btn @click="goBack" flat color="negative">Cancel</q-btn>
+		<q-btn @click="create" flat color="primary">Create</q-btn>
+	</q-card-actions>
 
-			<q-inner-loading :visible="submittingData" color="primary" />
-		</q-card>
-	</div>
-</div>
+	<q-inner-loading :visible="submittingData" color="primary" />
+</q-card>
 </template>
 
 <script>
@@ -42,7 +43,8 @@ import {
 	QCardTitle,
 	QCardSeparator,
 	QInnerLoading,
-	QInput
+	QInput,
+	QSelect
 } from "quasar";
 
 export default {
@@ -55,13 +57,25 @@ export default {
 		QCardTitle,
 		QCardSeparator,
 		QInnerLoading,
-		QInput
+		QInput,
+		QSelect
 	},
 	data() {
 		return {
 			name: "",
 			quantity: 1,
-			submittingData: true
+			submittingData: false,
+			shopOptions: [
+				{
+					label: "Hofer",
+					value: "Hofer"
+				},
+				{
+					label: "Spar",
+					value: "Spar"
+				}
+			],
+			selectedShop: "Hofer"
 		};
 	},
 

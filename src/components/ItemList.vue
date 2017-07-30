@@ -1,15 +1,17 @@
 <template>
-<div class="layout-padding">
-	<q-list highlight link separator>
-		<q-list-header>Shopping items</q-list-header>
-		
-		<item v-for="item in sortedItems"
-			:key="item.key"
-			:item="item.value"
-			:itemKey="item.key"
-		></item>
+<div>
+	<q-card>
+		<q-list highlight link separator>
+			<q-list-header>Shopping items</q-list-header>
+			
+			<item v-for="item in sortedItems"
+				:key="item.key"
+				:item="item.value"
+				:itemKey="item.key"
+			></item>
 
-	</q-list>
+		</q-list>
+	</q-card>
 
 	<q-fixed-position corner="bottom-right" :offset="[18, 18]">
 		<q-btn @click="createItem" round color="primary">
@@ -23,6 +25,7 @@
 import Item from "./Item";
 import {
 	QBtn,
+	QCard,
 	QFixedPosition,
 	QIcon,
 	QList,
@@ -34,6 +37,7 @@ export default {
 	components: {
 		Item,
 		QBtn,
+		QCard,
 		QFixedPosition,
 		QIcon,
 		QList,
