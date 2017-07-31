@@ -3,17 +3,20 @@ import Vue from "vue";
 
 let db = firebase.database();
 let itemsRef = db.ref("items/");
-let itemsHistoryRef = db.ref("itemsHistory");
+let itemsHistoryRef = db.ref("itemsHistory/");
 
 const store = {
 	state: {
 		items: {},
-		itemsHistory: [],
+		itemsHistory: {},
 		hasLoadedItems: false
 	},
 	addItem(item) {
 		let op = itemsRef.push(item);
-		// itemsHistoryRef.
+		const history = {
+			shop: item.shop
+		};
+		itemsHistoryRef.child(item.name).set(history);
 		return op;
 	},
 	updateItem(itemKey, updatedData) {
