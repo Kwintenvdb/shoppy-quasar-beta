@@ -5,11 +5,12 @@
 	</q-card-title>
 	
 	<q-card-main>
-		<q-input
+		<!-- <q-input
 			autofocus
 			float-label="Item name"
 			v-model="name"
-		></q-input>
+		></q-input> -->
+		<item-input v-model="name" />
 		<q-input
 			type="number"
 			float-label="Quantity"
@@ -56,10 +57,12 @@ import {
 	QInput,
 	QSelect
 } from "quasar";
+import ItemInput from "./ItemInput";
 
 export default {
 	name: "createItem",
 	components: {
+		ItemInput,
 		QBtn,
 		QCard,
 		QCardActions,

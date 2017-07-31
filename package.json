@@ -1,8 +1,8 @@
 {
   "name": "shoppy",
   "version": "0.0.1",
-  "description": "A Quasar App",
-  "author": "Your Name",
+  "description": "A simple shared shopping list.",
+  "author": "Kwinten Van den Berghe",
   "scripts": {
     "clean": "node build/script.clean.js",
     "dev": "node build/script.dev.js",
@@ -10,7 +10,6 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "@types/firebase": "^2.4.31",
     "babel-runtime": "^6.0.0",
     "firebase": "^4.2.0",
     "promise-polyfill": "^6.0.2",

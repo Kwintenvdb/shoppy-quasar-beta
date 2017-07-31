@@ -3,14 +3,18 @@ import Vue from "vue";
 
 let db = firebase.database();
 let itemsRef = db.ref("items/");
+let itemsHistoryRef = db.ref("itemsHistory");
 
 const store = {
 	state: {
 		items: {},
+		itemsHistory: [],
 		hasLoadedItems: false
 	},
 	addItem(item) {
-		return itemsRef.push(item);
+		let op = itemsRef.push(item);
+		// itemsHistoryRef.
+		return op;
 	},
 	updateItem(itemKey, updatedData) {
 		return itemsRef.child(itemKey).update(updatedData);
@@ -20,7 +24,7 @@ const store = {
 	}
 };
 
-itemsRef.orderByKey().once("value", snapshot => {
+itemsRef.once("value", snapshot => {
 	let state = store.state;
 	let val = snapshot.val();
 	if (val) {
@@ -39,6 +43,10 @@ itemsRef.orderByKey().once("value", snapshot => {
 	itemsRef.on("child_removed", data => {
 		Vue.delete(state.items, data.key);
 	});
+});
+
+itemsHistoryRef.once("value", snapshot => {
+	console.log(snapshot.val());
 });
 
 export default store;
