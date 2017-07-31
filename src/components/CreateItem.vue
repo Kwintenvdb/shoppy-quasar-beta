@@ -17,6 +17,18 @@
 			float-label="Quantity"
 			v-model="quantity"
 			:min="1"
+			:after="[
+				{
+					icon: 'remove',
+					content: true,
+					handler: () => addQuantity(-1)
+				},
+				{
+					icon: 'add',
+					content: true,
+					handler: () => addQuantity(1)
+				}
+			]"
 		></q-input>
 		<q-select
 			float-label="Shop"
@@ -65,7 +77,12 @@ export default {
 			name: "",
 			quantity: 1,
 			submittingData: false,
+			// Create association w/ shop item and shop by default...
 			shopOptions: [
+				{
+					label: "Anywhere",
+					value: "Anywhere"
+				},
 				{
 					label: "Hofer",
 					value: "Hofer"
@@ -75,7 +92,7 @@ export default {
 					value: "Spar"
 				}
 			],
-			selectedShop: "Hofer"
+			selectedShop: "Anywhere"
 		};
 	},
 
@@ -97,6 +114,10 @@ export default {
 		},
 		goBack() {
 			this.$router.push("/");
+		},
+		addQuantity(amount) {
+			let newQuantity = this.quantity + amount;
+			this.quantity = Math.max(1, newQuantity);
 		}
 	}
 };

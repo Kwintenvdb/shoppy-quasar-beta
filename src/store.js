@@ -15,8 +15,8 @@ const store = {
 	updateItem(itemKey, updatedData) {
 		return itemsRef.child(itemKey).update(updatedData);
 	},
-	deleteItem(item) {
-		itemsRef.child(item.key).remove();
+	deleteItem(itemKey) {
+		itemsRef.child(itemKey).remove();
 	}
 };
 
