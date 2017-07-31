@@ -1,7 +1,7 @@
 <template>
 <div>
 	<q-card>
-		<q-list link separator>
+		<q-list link no-border>
 			<center v-if="showLoading">
 				<q-spinner class="item-spinner" color="primary" :size="40" />
 			</center>
@@ -26,7 +26,7 @@
 		</q-list>
 	</q-card>
 
-	<q-fixed-position corner="bottom-right" :offset="[18, 18]">
+	<q-fixed-position corner="bottom-right" :offset="[24, 24]">
 		<q-btn @click="createItem" round color="primary">
 			<q-icon name="add"></q-icon>
 		</q-btn>

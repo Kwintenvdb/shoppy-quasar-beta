@@ -4,8 +4,6 @@
 		Create new shopping item
 	</q-card-title>
 	
-	<q-card-separator></q-card-separator>
-	
 	<q-card-main>
 		<q-input
 			autofocus
@@ -53,7 +51,7 @@ import {
 	QCardActions,
 	QCardMain,
 	QCardTitle,
-	QCardSeparator,
+	// QCardSeparator,
 	QInnerLoading,
 	QInput,
 	QSelect
@@ -67,7 +65,7 @@ export default {
 		QCardActions,
 		QCardMain,
 		QCardTitle,
-		QCardSeparator,
+		// QCardSeparator,
 		QInnerLoading,
 		QInput,
 		QSelect

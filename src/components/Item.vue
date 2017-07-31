@@ -4,14 +4,14 @@
 		<q-checkbox :value="dirtyFinished" @change="onCheck"></q-checkbox>
 	</q-item-side>
 
-	<q-item-main>
+	<q-item-main :class="dirtyFinished ? 'item-text' : ''">
 		<q-item-tile label>{{ item.name }} <small>({{ item.quantity }})</small></q-item-tile>
 		<q-item-tile sublabel>from {{ item.shop }}</q-item-tile>
 	</q-item-main>
 
 	<q-item-side right icon="more_vert">
 		<q-popover ref="popover">
-			<q-list link>
+			<q-list link no-border>
 				<q-item @click="$refs.popover.close()">
 					<q-item-main label="Edit" />
 				</q-item>
@@ -68,3 +68,8 @@ export default {
 	}
 };
 </script>
+
+<style>
+.item-text {
+}
+</style>
