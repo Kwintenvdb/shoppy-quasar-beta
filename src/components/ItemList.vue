@@ -1,7 +1,7 @@
 <template>
 <div>
 	<q-card>
-		<q-list link no-border>
+		<q-list no-border>
 			<center v-if="showLoading">
 				<q-spinner class="item-spinner" color="primary" :size="40" />
 			</center>

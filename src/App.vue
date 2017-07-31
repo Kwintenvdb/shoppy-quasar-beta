@@ -1,7 +1,7 @@
 <template>
 <!-- Don't drop "q-app" class -->
 <div id="q-app">
-	<q-layout reveal>
+	<q-layout view="hHr LpR lFf">
 		<q-toolbar slot="header">
 			<q-btn flat @click="$refs.layout.toggleLeft()">
 				<q-icon name="menu" />
@@ -44,4 +44,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="stylus">
+@import '~quasar-framework/dist/quasar.mat.styl'
+
+.layout-padding
+  @media (max-width $breakpoint-sm-max)
+    padding .75rem .5rem
+</style>

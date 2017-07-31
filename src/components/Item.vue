@@ -1,11 +1,11 @@
 <template>
-<q-item tag="label">
+<q-item>
 	<q-item-side>
 		<q-checkbox :value="dirtyFinished" @change="onCheck"></q-checkbox>
 	</q-item-side>
 
 	<q-item-main :class="dirtyFinished ? 'item-text' : ''">
-		<q-item-tile label>{{ item.name }} <small>({{ item.quantity }})</small></q-item-tile>
+		<q-item-tile label>{{ item.name }} <small class="light-paragraph">({{ item.quantity }})</small></q-item-tile>
 		<q-item-tile sublabel>from {{ item.shop }}</q-item-tile>
 	</q-item-main>
 
@@ -27,6 +27,7 @@
 <script>
 import {
 	QCheckbox,
+	QChip,
 	QItem,
 	QItemMain,
 	QItemSide,
@@ -40,6 +41,7 @@ export default {
 	props: ["item", "itemKey"],
 	components: {
 		QCheckbox,
+		QChip,
 		QItem,
 		QItemMain,
 		QItemSide,
