@@ -1,19 +1,28 @@
 <template>
 <div>
 	<q-card>
-		<q-list highlight link separator>
-			<q-list-header>Shopping items</q-list-header>
-			
-			<item v-for="item in sortedItems"
-				:key="item.key"
-				:item="item.value"
-				:itemKey="item.key"
-			></item>
-
-			<!-- Give this padding like item -->
+		<q-list link separator>
 			<center v-if="showLoading">
-				<q-spinner color="primary" :size="40" />
+				<q-spinner class="item-spinner" color="primary" :size="40" />
 			</center>
+			<template v-else>
+				<q-list-header>Shopping items</q-list-header>
+				
+				<item v-for="item in getItems(false)"
+					:key="item.key"
+					:item="item.value"
+					:itemKey="item.key"
+				></item>
+
+				<q-list-header>Done items</q-list-header>
+
+				<item v-for="item in getItems(true)"
+					:key="item.key"
+					:item="item.value"
+					:itemKey="item.key"
+				></item>
+			</template>
+			
 		</q-list>
 	</q-card>
 
@@ -77,6 +86,18 @@ export default {
 	methods: {
 		createItem() {
 			this.$router.push("/createItem");
+		},
+		getItems(done) {
+			let items = this.sortedItems;
+			let filteredItems = [];
+			if (items) {
+				for (const item of items) {
+					if (item.value.finished === done) {
+						filteredItems.push(item);
+					}
+				}
+			}
+			return filteredItems;
 		}
 		// showItem(item) {
 		// 	return this.showDone === item.finished;
@@ -86,4 +107,7 @@ export default {
 </script>
 
 <style>
+.item-spinner {
+	margin: 8px 16px;
+}
 </style>

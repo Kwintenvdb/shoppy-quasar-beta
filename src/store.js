@@ -10,7 +10,6 @@ const store = {
 		hasLoadedItems: false
 	},
 	addItem(item) {
-		console.log(item);
 		return itemsRef.push(item);
 	},
 	updateItem(itemKey, updatedData) {
